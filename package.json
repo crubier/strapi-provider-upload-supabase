@@ -1,6 +1,6 @@
 {
   "name": "strapi-provider-upload-supabase",
-  "version": "0.0.1-beta.3",
+  "version": "1.0.0",
   "description": "Supabase storage provider for Strapi upload plugin",
   "homepage": "http://strapi.io",
   "keywords": [
