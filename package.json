@@ -1,0 +1,39 @@
+{
+  "name": "strapi-provider-upload-supabase",
+  "version": "0.0.1-beta.1",
+  "description": "Supabase storage provider for Strapi upload plugin",
+  "homepage": "http://strapi.io",
+  "keywords": [
+    "upload",
+    "supabase",
+    "storage",
+    "strapi",
+    "provider"
+  ],
+  "directories": {
+    "lib": "./lib"
+  },
+  "main": "./lib",
+  "dependencies": {
+    "@supabase/supabase-js": "^1.20.0"
+  },
+  "strapi": {
+    "isProvider": true
+  },
+  "author": {
+    "email": "vincent.lecrubier@gmail.com",
+    "name": "Vincent Lecrubier"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/crubier/strapi-provider-upload-supabase.git"
+  },
+  "bugs": {
+    "url": "https://github.com/crubier/strapi-provider-upload-supabase/issues"
+  },
+  "engines": {
+    "node": ">= 10.0.0",
+    "npm": ">= 6.0.0"
+  },
+  "license": "MIT"
+}
