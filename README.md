@@ -17,20 +17,44 @@
 npm i strapi-provider-upload-supabase
 ```
 
-2. Create config in `./extensions/upload/config/settings.js` with content
+2. Depending on your Strapi version, create the following:
+ - **Strapi v3**
 
-```
-module.exports = {
-  provider: "supabase",
-  providerOptions: {
-    apiUrl: process.env.SUPABASE_API_URL,
-    apiKey: process.env.SUPABASE_API_KEY,
-    bucket: process.env.SUPABASE_BUCKET,
-    directory: process.env.SUPABASE_DIRECTORY,
-    options: {}
-  }
-}
-```
+    Create config in `./extensions/upload/config/settings.js` with content
+    ```
+    module.exports = {
+      provider: "supabase",
+      providerOptions: {
+        apiUrl: process.env.SUPABASE_API_URL,
+        apiKey: process.env.SUPABASE_API_KEY,
+        bucket: process.env.SUPABASE_BUCKET,
+        directory: process.env.SUPABASE_DIRECTORY,
+        options: {}
+      }
+    }
+    ```
+
+- **Strapi v4**
+
+    Create config in `../config/plugins.js` with content
+    ```
+    module.exports = ({ env }) => ({
+        // ...
+        upload: {
+          config: {
+            provider: "strapi-provider-upload-supabase",
+            providerOptions: {
+              apiUrl: process.env.SUPABASE_API_URL,
+              apiKey: process.env.SUPABASE_API_KEY,
+              bucket: process.env.SUPABASE_BUCKET,
+              directory: process.env.SUPABASE_DIRECTORY,
+              options: {}
+            }
+          },
+        },
+        // ...
+      });
+    ```
 
 3. Create `.env` and add to them 
 
