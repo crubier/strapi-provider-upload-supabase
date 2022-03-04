@@ -3,6 +3,7 @@
 - This provider is a fork of [shorwood's](https://github.com/shorwood) [strapi upload provider digitalocean](https://github.com/shorwood/strapi-provider-upload-do) for Digital Ocean spaces, but applied to [Supabase storage](https://supabase.io/)
 
 ## Parameters
+
 - **apiUrl** : [Supabase API Url](https://supabase.io/docs/reference/javascript/initializing)
 - **apiKey** : [Supabase API Key](https://supabase.io/docs/reference/javascript/initializing)
 - **bucket** : [Supabase storage bucket](https://supabase.io/docs/guides/storage)
@@ -11,41 +12,49 @@
 
 ## How to use
 
-1. Install this package
+### 1. Install this package
 
-```
+```bash
 npm i strapi-provider-upload-supabase
 ```
 
-2. Create config in `./extensions/upload/config/settings.js` with content
+or using yarn
 
-```
-module.exports = {
-  provider: "supabase",
-  providerOptions: {
-    apiUrl: process.env.SUPABASE_API_URL,
-    apiKey: process.env.SUPABASE_API_KEY,
-    bucket: process.env.SUPABASE_BUCKET,
-    directory: process.env.SUPABASE_DIRECTORY,
-    options: {}
-  }
-}
+```bash
+yarn add strapi-provider-upload-supabase
 ```
 
-3. Create `.env` and add to them 
+### 2. Create config in `./extensions/upload/config/plugins.js` with the following content
 
+```js
+module.exports = ({ env }) => ({
+  upload: {
+    config: {
+      provider: "supabase",
+      providerOptions: {
+        apiUrl: env("SUPABASE_API_URL"),
+        apiKey: env("SUPABASE_API_KEY"),
+        bucket: env("SUPABASE_BUCKET"),
+        directory: env("SUPABASE_DIRECTORY"),
+        options: {},
+      },
+    },
+  },
+});
 ```
-SUPABASE_API_URL="<Your Supabase url>"
-SUPABASE_API_KEY="<Your Supabase api key>"
-SUPABASE_BUCKET="strapi-uploads"
-SUPABASE_DIRECTORY=""
+
+### 3. Add the following to environment variables (`.env`)
+
+```bash
+SUPABASE_API_URL=<Your Supabase url>
+SUPABASE_API_KEY=<Your Supabase api key>
+SUPABASE_BUCKET=strapi-uploads
+SUPABASE_DIRECTORY=my-directory
 ```
 
-with values obtained from this page:
+Find my [Supabase API URL and Key](https://supabase.com/docs/guides/api#api-url-and-keys)
 
-> https://app.supabase.io/project/<your-project>/settings/api
-
-Parameters `options`, `bucket` and `directory` are optional and you can omit it, they will take the values shown in the example above.
+Parameters `options`, `bucket` and `directory` are optional and you can omit them.
 
 ## Resources
 
