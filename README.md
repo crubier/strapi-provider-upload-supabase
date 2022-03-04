@@ -14,13 +14,17 @@
 
 ### 1. Install this package
 
-`npm i strapi-provider-upload-supabase`
+```bash
+npm i strapi-provider-upload-supabase
+```
 
 or using yarn
 
-`yarn add strapi-provider-upload-supabase`
+```bash
+yarn add strapi-provider-upload-supabase
+```
 
-### 2. Create config in `./extensions/upload/config/plugins.js` with content
+### 2. Create config in `./extensions/upload/config/plugins.js` with the following content
 
 ```js
 module.exports = ({ env }) => ({
@@ -31,7 +35,7 @@ module.exports = ({ env }) => ({
         apiUrl: env("SUPABASE_API_URL"),
         apiKey: env("SUPABASE_API_KEY"),
         bucket: env("SUPABASE_BUCKET"),
-        directory: env("SUPABASE_DIRECTORY") || "",
+        directory: env("SUPABASE_DIRECTORY"),
         options: {},
       },
     },
@@ -39,7 +43,7 @@ module.exports = ({ env }) => ({
 });
 ```
 
-### 3. Create `.env` and add to them
+### 3. Add the following to environment variables (`.env`)
 
 ```bash
 SUPABASE_API_URL=<Your Supabase url>
@@ -48,9 +52,7 @@ SUPABASE_BUCKET=strapi-uploads
 SUPABASE_DIRECTORY=my-directory
 ```
 
-with values obtained from this page:
-
-> https://app.supabase.io/project/<your-project>/settings/api
+Find my [Supabase API URL and Key](https://supabase.com/docs/guides/api#api-url-and-keys)
 
 Parameters `options`, `bucket` and `directory` are optional and you can omit them.
 
